@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:dice_app/widgets/DiceRow.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,6 +8,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -12,17 +16,8 @@ class HomeScreen extends StatelessWidget {
         title: Text("Dice App"),
       ),
       body: Center(
-        child: Row(
-          children: [
-            Expanded(
-              // flex: 2,
-              child: Image.asset('images/dice1.png')),
-            Expanded(child: Image.asset('images/dice2.png'))
-            
-          ],
-        ),
+        child: DiceRow(),
       ),
-
     );
   }
 }
