@@ -1,0 +1,56 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+
+var db = FirebaseFirestore.instance;
+class EditCategoryScreen extends StatefulWidget {
+  final Map<String, dynamic> category;
+  final String docId;
+
+  const EditCategoryScreen({
+    super.key, required this.category, required this.docId,
+  });
+
+  @override
+  State<EditCategoryScreen> createState() =>
+      _EditCategoryScreenState(category: category, docId: docId);
+}
+
+class _EditCategoryScreenState extends State<EditCategoryScreen> {
+  final Map<String, dynamic> category;
+  final String docId;
+  final categoryNameController = TextEditingController();
+
+  void editCategory() async {
+    try {
+      await db.collection("catgories").doc(docId).update({
+        "categoryname": categoryNameController.text,
+      });
+      print("Updated");
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  _EditCategoryScreenState({required this.category, required this.docId}) {
+    categoryNameController.text = category["categoryname"];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blue.shade200,
+      appBar: AppBar(title: Text("Category")),
+      body: Column(
+        children: [
+          TextField(
+            controller: categoryNameController,
+            decoration: InputDecoration(
+              labelText: 'Category Name'),
+          ),
+          TextButton(onPressed: editCategory, 
+          child: Text("Update")),
+        ],
+      ),
+    );
+  }
+}
