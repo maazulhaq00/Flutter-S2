@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
@@ -27,6 +28,7 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
         "categoryname": categoryNameController.text,
       });
       print("Updated");
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryListScreen()))
     } catch (err) {
       print(err);
     }
