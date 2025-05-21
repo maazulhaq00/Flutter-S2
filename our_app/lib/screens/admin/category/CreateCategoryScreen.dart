@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:our_app/screens/CategoryListScreen.dart';
+import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
+import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
 
-class CategoryScreen extends StatefulWidget {
-  const CategoryScreen({super.key});
+class CreateCategoryScreen extends StatefulWidget {
+  const CreateCategoryScreen({super.key});
 
   @override
-  State<CategoryScreen> createState() => _CategoryScreenState();
+  State<CreateCategoryScreen> createState() => _CreateCategoryScreenState();
 }
 
-class _CategoryScreenState extends State<CategoryScreen> {
+class _CreateCategoryScreenState extends State<CreateCategoryScreen> {
   final categoryNameController = TextEditingController();
 
   void addCategory() async {
@@ -38,7 +39,8 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
-      appBar: AppBar(title: Text("Category")),
+      appBar: AppBar(title: Text("Create Category")),
+      drawer: AppDrawer(),
       body: Column(
         children: [
           TextField(

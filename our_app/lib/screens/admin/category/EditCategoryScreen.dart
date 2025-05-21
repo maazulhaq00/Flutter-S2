@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
 class EditCategoryScreen extends StatefulWidget {
@@ -39,7 +40,8 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
-      appBar: AppBar(title: Text("Category")),
+      appBar: AppBar(title: Text("Edit Category")),
+      drawer: AppDrawer(),
       body: Column(
         children: [
           TextField(

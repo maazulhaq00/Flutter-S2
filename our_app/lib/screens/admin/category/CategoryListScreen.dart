@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:our_app/screens/EditCategoryScreen.dart';
+import 'package:our_app/screens/admin/category/EditCategoryScreen.dart';
+import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
 
@@ -34,6 +35,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     return Scaffold(
       backgroundColor: Colors.blue.shade200,
       appBar: AppBar(title: Text("Category List")),
+      drawer: AppDrawer(),
       body: StreamBuilder<QuerySnapshot>(
         stream: db.collection('catgories').snapshots(),
         builder: (context, snapshot) {

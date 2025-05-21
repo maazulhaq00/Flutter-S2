@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:our_app/screens/CategoryListScreen.dart';
-import 'package:our_app/screens/CategoryScreen.dart';
+import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
+import 'package:our_app/screens/admin/category/CreateCategoryScreen.dart';
 import 'firebase_options.dart';
 
 
