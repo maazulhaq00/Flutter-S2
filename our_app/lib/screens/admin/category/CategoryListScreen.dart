@@ -26,7 +26,10 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
   void editCategory(category, docId) async {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => EditCategoryScreen(category: category, docId: docId,)),
+      MaterialPageRoute(
+        builder:
+            (context) => EditCategoryScreen(category: category, docId: docId),
+      ),
     );
   }
 
@@ -65,8 +68,8 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
             padding: EdgeInsets.all(10),
             itemCount: categoriesDocs.length,
             itemBuilder: (context, index) {
-
-              Map<String, dynamic> categoryMap = categoriesDocs[index].data() as Map<String, dynamic>;
+              Map<String, dynamic> categoryMap =
+                  categoriesDocs[index].data() as Map<String, dynamic>;
 
               String docId = categoriesDocs[index].id;
 
@@ -80,11 +83,11 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                     children: [
                       IconButton(
                         onPressed: () => deleteCategory(docId),
-                        icon: Icon(Icons.delete),
+                        icon: Icon(Icons.delete, color: Colors.red),
                       ),
                       IconButton(
                         onPressed: () => editCategory(categoryMap, docId),
-                        icon: Icon(Icons.edit),
+                        icon: Icon(Icons.edit, color: Colors.green),
                       ),
                     ],
                   ),

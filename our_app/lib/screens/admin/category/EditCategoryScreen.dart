@@ -4,12 +4,15 @@ import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
+
 class EditCategoryScreen extends StatefulWidget {
   final Map<String, dynamic> category;
   final String docId;
 
   const EditCategoryScreen({
-    super.key, required this.category, required this.docId,
+    super.key,
+    required this.category,
+    required this.docId,
   });
 
   @override
@@ -28,7 +31,10 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
         "categoryname": categoryNameController.text,
       });
       print("Updated");
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryListScreen()))
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => CategoryListScreen()),
+      );
     } catch (err) {
       print(err);
     }
@@ -44,16 +50,22 @@ class _EditCategoryScreenState extends State<EditCategoryScreen> {
       backgroundColor: Colors.blue.shade200,
       appBar: AppBar(title: Text("Edit Category")),
       drawer: AppDrawer(),
-      body: Column(
-        children: [
-          TextField(
-            controller: categoryNameController,
-            decoration: InputDecoration(
-              labelText: 'Category Name'),
-          ),
-          TextButton(onPressed: editCategory, 
-          child: Text("Update")),
-        ],
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: TextField(
+                controller: categoryNameController,
+                decoration: InputDecoration(labelText: 'Category Name'),
+              ),
+            ),
+            TextButton(onPressed: editCategory, child: Text("Update")),
+          ],
+        ),
       ),
     );
   }

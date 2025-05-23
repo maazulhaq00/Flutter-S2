@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/screens/admin/category/CreateCategoryScreen.dart';
+import 'package:our_app/screens/admin/product/CreateProduct.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -30,6 +31,15 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => CategoryListScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text("Create Product"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => CreateProduct()),
               );
             },
           ),

@@ -27,8 +27,7 @@ class _CreateCategoryScreenState extends State<CreateCategoryScreen> {
 
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => 
-        CategoryListScreen()),
+        MaterialPageRoute(builder: (context) => CategoryListScreen()),
       );
     } catch (err) {
       print(err);
@@ -41,14 +40,22 @@ class _CreateCategoryScreenState extends State<CreateCategoryScreen> {
       backgroundColor: Colors.blue.shade200,
       appBar: AppBar(title: Text("Create Category")),
       drawer: AppDrawer(),
-      body: Column(
-        children: [
-          TextField(
-            controller: categoryNameController,
-            decoration: InputDecoration(labelText: 'Category Name'),
-          ),
-          TextButton(onPressed: addCategory, child: Text("Add")),
-        ],
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: TextField(
+                controller: categoryNameController,
+                decoration: InputDecoration(labelText: 'Category Name'),
+              ),
+            ),
+            TextButton(onPressed: addCategory, child: Text("Add")),
+          ],
+        ),
       ),
     );
   }
