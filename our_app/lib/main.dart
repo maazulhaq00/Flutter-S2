@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/screens/admin/category/CreateCategoryScreen.dart';
+import 'package:our_app/screens/admin/product/CreateProduct.dart';
 import 'firebase_options.dart';
 
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CategoryListScreen(),
+      home: CreateProduct(),
     );
   }
 }
