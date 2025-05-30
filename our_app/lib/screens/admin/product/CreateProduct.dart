@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:our_app/widgets/AdminDrawer.dart';
 
 var db = FirebaseFirestore.instance;
@@ -12,6 +15,9 @@ class CreateProduct extends StatefulWidget {
 }
 
 class _CreateProductState extends State<CreateProduct> {
+  File? _image;
+  final picker = ImagePicker();
+
   String selectedCategory = "";
 
   List<DropdownMenuItem> categoryList = [];
@@ -33,6 +39,16 @@ class _CreateProductState extends State<CreateProduct> {
           child: Text(categoryDocs[i].data()["categoryname"]),
         ),
       );
+    }
+  }
+
+  void pickImage() async {
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedImage != null) {
+      setState(() {
+        _image = File(pickedImage.path);
+      });
     }
   }
 
@@ -64,8 +80,17 @@ class _CreateProductState extends State<CreateProduct> {
               items: categoryList,
               onChanged: selectCategory,
             ),
+            SizedBox(height: 10),
 
-            Text(selectedCategory),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: _image == null
+                ? Text("No Image Selected")
+                : Image.network(_image!.path, height: 200),
+            ),
+
+            // Text(selectedCategory),
+            ElevatedButton(onPressed: pickImage, child: Text("Select Image")),
           ],
         ),
       ),
