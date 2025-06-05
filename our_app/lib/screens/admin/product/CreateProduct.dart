@@ -96,8 +96,7 @@ class _CreateProductState extends State<CreateProduct> {
   }
 
   void addProduct() async {
-    if (productNameController.text != null &&
-        productPriceController.text != null &&
+    if (productPriceController.text != null &&
         selectedCategory != "" &&
         _image != null) {
       // product add to firebase

@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
       final userDocs = user.docs;
 
-      if (userDocs.length == 0) {
+      if (userDocs.isEmpty) {
         print("Invalid email or password");
       } else {
         if (userDocs[0]["role"] == "user") {

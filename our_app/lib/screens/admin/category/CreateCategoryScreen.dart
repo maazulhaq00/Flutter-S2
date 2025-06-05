@@ -46,7 +46,7 @@ class _CreateCategoryScreenState extends State<CreateCategoryScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.6,
               child: TextField(
                 controller: categoryNameController,
