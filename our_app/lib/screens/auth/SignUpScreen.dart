@@ -30,7 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void navigateToLogin() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => LoginScreen()),
     );

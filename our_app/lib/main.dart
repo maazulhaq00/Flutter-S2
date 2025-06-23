@@ -6,6 +6,7 @@ import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/screens/admin/category/CreateCategoryScreen.dart';
 import 'package:our_app/screens/admin/product/CreateProduct.dart';
 import 'package:our_app/screens/auth/SignUpScreen.dart';
+import 'package:our_app/screens/auth/StartScreen.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: CreateProduct(),
+      home: StartScreen(),
     );
   }
 }

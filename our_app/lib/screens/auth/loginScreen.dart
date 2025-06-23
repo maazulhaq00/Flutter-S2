@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/screens/auth/SignUpScreen.dart';
 import 'package:our_app/screens/user/HomeScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var db = FirebaseFirestore.instance;
 
@@ -31,13 +32,20 @@ class _LoginScreenState extends State<LoginScreen> {
       if (userDocs.isEmpty) {
         print("Invalid email or password");
       } else {
+        var prefs = await SharedPreferences.getInstance();
+
+        prefs.setBool("isLoggedIn", true);
+        prefs.setString("role", userDocs[0]["role"]);
+        prefs.setString("email", userDocs[0]["email"]);
+        
+
         if (userDocs[0]["role"] == "user") {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => HomeScreen()),
           );
         } else if (userDocs[0]["role"] == "admin") {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => CategoryListScreen()),
           );
@@ -47,13 +55,14 @@ class _LoginScreenState extends State<LoginScreen> {
       print(e);
     }
   }
+
   void navigateToSignUp() {
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => SignUpScreen()),
     );
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

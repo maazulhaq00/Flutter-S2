@@ -3,6 +3,8 @@ import 'package:our_app/screens/admin/category/CategoryListScreen.dart';
 import 'package:our_app/screens/admin/category/CreateCategoryScreen.dart';
 import 'package:our_app/screens/admin/product/CreateProduct.dart';
 import 'package:our_app/screens/admin/product/ProductListScreen.dart';
+import 'package:our_app/screens/auth/loginScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -50,6 +52,18 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ProductListScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: Text("Logout"),
+            onTap: () async {
+              var prefs = await SharedPreferences.getInstance();
+              prefs.clear();
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginScreen()),
               );
             },
           ),
